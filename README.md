@@ -11,6 +11,6 @@ A random number between 1-50 is kept by the computer. The user tries to find thi
 
 -> If you want to try the app;
 
-- docker image pull melihselamiurkmez/guessapp
+- docker image pull melihselamiurkmez/guessgame
 - docker container run --name <containername> -it melihselamiurkmez/guessapp 
 
