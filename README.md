@@ -7,7 +7,7 @@ A random number between 1-50 is kept by the computer. The user tries to find thi
 
 *Ex Image*
 
-![Guess Number Game Ex Image]()
+![Guess Number Game Ex Image](https://github.com/MelihSelamiUrkmezz/DockerPractices/blob/master/GuessNumberGame/ExImage.png)
 
 -> If you want to try the app;
 
