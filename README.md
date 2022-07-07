@@ -20,3 +20,9 @@ It is python code that enables publishing a website from Flask.
 
 *Ex Image*
 
+![Website Ex Image](https://github.com/MelihSelamiUrkmezz/DockerPractices/blob/master/FlaskStream/website.png)
+
+-> If you want see my website;
+
+- docker image pull melihselamiurkmez/website
+- docker container run --name <containername> -d -p <port>:5000 melihselamiurkmez/website 
