@@ -14,3 +14,9 @@ A random number between 1-50 is kept by the computer. The user tries to find thi
 - docker image pull melihselamiurkmez/guessgame
 - docker container run --name <containername> -it melihselamiurkmez/guessapp 
 
+### Stream Website with Flask
+
+It is python code that enables publishing a website from Flask.
+
+*Ex Image*
+
