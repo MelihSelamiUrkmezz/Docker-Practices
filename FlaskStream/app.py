@@ -1,9 +1,37 @@
-from flask import Flask, render_template
+from flask import Flask 
+
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return render_template("index.html")
+    return """
+    <!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-image: url('https://media.istockphoto.com/photos/the-perfect-setting-to-complete-work-picture-id1251629816?b=1&k=20&m=1251629816&s=170667a&w=0&h=HFCKUXMAXu_gsKwAaVJ5Yfc5CpXhkok4Nu1KigsAXIQ=');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+    </style>
+</head>
+<body>
+
+<center><h1><FONT COLOR=white>Melih Selami Urkmez's Website</h1></center>
+
+<center><p>Hello Everyone!<br>
+My name's Melih Selami and surname's Urkmez.<br>
+I student at Kocaeli University in Computer Engineering Department.<br>
+I love DevOps and Cyber Security.<br>
+If I want i can do it.<br>
+Goodbye!</p>
+</FONT>
+</center>
+</body>
+</html>"
+    """
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=int("5000"),debug=True)
