@@ -26,3 +26,16 @@ It is python code that enables publishing a website from Flask.
 
 - docker image pull melihselamiurkmez/website
 - docker container run --name <containername> -d -p <port>:5000 melihselamiurkmez/website 
+
+### Instagram Automation
+
+It allows you to find unfollowers of yourself or the people you follow on your Instagram account. It also allows to return the url of the profile photo of any desired account.
+
+*Ex Image*
+
+![Instagram Automation Ex Image]()
+
+-> If you want to try the app;
+
+- docker image pull melihselamiurkmez/instagramscript
+- docker container run --name <containername> -it melihselamiurkmez/instagramscript
