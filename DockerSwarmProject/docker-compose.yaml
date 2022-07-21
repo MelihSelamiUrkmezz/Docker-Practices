@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    restart: always
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 2
+        delay: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_USER: Wordpress
+      MYSQL_DATABASE: Project
+    networks:
+      - webnet
+    secrets:
+      - db_password
+      - db_root_password
+
+
+  wordpress:
+    image: wordpress:latest
+    depends_on:
+      - mysqldb
+    restart: always
+    container_name: wordpress-container
+    ports:
+      - "8080:80"
+    networks:
+      - webnet
+    environment:
+      WORDPRESS_DB_PASSWORD_FILE: /run/secrets/db_password
+      WORDPRESS_DB_HOST: mysqldb
+      WORDPRESS_DB_NAME: Project
+      WORDPRESS_DB_USER: Wordpress
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 2
+        delay: 10s
+    secrets:
+      - db_password
+
+
+networks:
+  webnet:
+    driver: overlay
+secrets:
+  db_root_password:
+    file: ./secrets/db_root_password.txt
+  db_password:
+    file: ./secrets/db_password.txt
