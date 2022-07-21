@@ -39,3 +39,14 @@ It allows you to find unfollowers of yourself or the people you follow on your I
 
 - docker image pull melihselamiurkmez/instagramscript
 - docker container run --name <containername> -it melihselamiurkmez/instagramscript
+
+### Container Cluster With Docker Swarm
+
+It is a swarm stack yaml file that run a website with 3 replicas and a database with 3 replicas on 1 manager node.
+
+-> If you want to try the app;
+- git clone 
+- docker swarm init --advertise-addr <ip_addr> 
+- docker stack deploy -c <composename>.yaml <stackname>
+
+
