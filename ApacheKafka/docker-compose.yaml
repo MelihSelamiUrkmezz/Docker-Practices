@@ -1,0 +1,46 @@
+version: "3.7"
+
+
+services:
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    ports:
+      - "2181:2181"
+    volumes:
+      - "data:/bitnami"
+    networks:
+      - kafkaweb
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: docker.io/bitnami/kafka:3.2
+    depends_on:
+      - zookeeper
+    volumes:
+      - "zookeeper:/bitnami"
+    networks:
+      - kafkaweb
+    ports:
+      - "9092:9092"
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    restart: "no"
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: "PLAINTEXT://kafka:9092"
+      JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
+    depends_on:
+      - "kafka"
+    networks:
+      - kafkaweb
+networks:
+  kafkaweb:
+    driver: overlay
+volumes:
+  data:
+  zookeeper:
